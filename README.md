@@ -1,2 +1,2 @@
 # teste-phising
-Tela de teste para segurança de outros app angular
+Tela de teste para segurança de outros app angular.
