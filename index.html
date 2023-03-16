@@ -12,6 +12,12 @@
         function getTokenTest(evt) {
             console.log(evt.data);
         }
+
+        if (window.addEventListener) {
+            window.addEventListener("message", getTokenTest, false);
+        } else {
+            window.addEventListener("message", getTokenTest)
+        }
     </script>
 </head>
 
