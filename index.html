@@ -11,6 +11,7 @@
 
         function getTokenTest(evt) {
             console.log(evt.data);
+            document.getElementById("recived-message").innerHTML = "TOKEN RECEBIDO " + evt.data.token;
         }
 
         if (window.addEventListener) {
@@ -30,6 +31,8 @@
                 <input type="submit" value="Save" onclick="onClick()">
             </form>
         </div>
+
+        <p id="recived-message"></p>
     </div>
 </body>
 
