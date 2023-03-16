@@ -11,7 +11,7 @@
 
         function getTokenTest(evt) {
             console.log(evt.data);
-            document.getElementById("recived-message").innerHTML = "TOKEN RECEBIDO " + evt.data.token;
+            document.getElementById("recived-message").innerHTML = "TOKEN RECEBIDO " + JSON.parse(evt.data.token);
         }
 
         if (window.addEventListener) {
