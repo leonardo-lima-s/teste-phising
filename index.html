@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+	<head>
+		<title>Teste pishing</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script>
+			function onClick() {
+				alert("Você caiu no conto do vigario!!!");
+			}
 
-<head>
-    <title>Teste pishing</title>
-    <meta charset="utf-8">
-    <script>
-        function onClick() {
-            alert("Você caiu no conto do vigario!!!")
-        }
+			function getTokenTest(evt) {
+				console.log(evt.data);
+			}
 
-        function getTokenTest(evt) {
-            console.log(evt.data);
-        }
+			if (window.addEventListener) {
+				window.addEventListener("message", getTokenTest, false);
+			} else {
+				window.addEventListener("message", getTokenTest);
+			}
+		</script>
+	</head>
 
-        if (window.addEventListener) {
-            window.addEventListener("message", getTokenTest, false);
-        } else {
-            window.addEventListener("message", getTokenTest)
-        }
-    </script>
-</head>
+	<body>
+		<div class="content">
+			<div class="form-group">
+				<form action="" method="get">
+					<label for="GET-name">Name:</label>
+					<input id="GET-name" type="text" name="name" />
+					<input type="submit" value="Save" onclick="onClick()" />
+				</form>
+			</div>
+		</div>
 
-<body>
-    <div class="content">
-        <div class="form-group">
-            <form action="" method="get">
-                <label for="GET-name">Name:</label>
-                <input id="GET-name" type="text" name="name">
-                <input type="submit" value="Save" onclick="onClick()">
-            </form>
-        </div>
-    </div>
-</body>
+		<h1>HTML Geolocation</h1>
+		<p>Click the button to get your coordinates.</p>
 
+		<button onclick="getLocation()">Try It</button>
+
+		<p id="demo"></p>
+
+		<script>
+			const x = document.getElementById("demo");
+
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+			}
+		</script>
+
+		<h1>Solicitar Permissão de Câmera e Microfone</h1>
+		<button id="accessButton">Acessar Câmera e Microfone</button>
+		<video id="video" width="640" height="480" autoplay></video>
+
+		<script>
+			document.getElementById("accessButton").addEventListener("click", async () => {
+				try {
+					const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+					const videoElement = document.getElementById("video");
+					videoElement.srcObject = stream;
+				} catch (error) {
+					console.error("Erro ao acessar a câmera e o microfone:", error);
+				}
+			});
+		</script>
+	</body>
 </html>
