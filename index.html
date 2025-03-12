@@ -22,7 +22,8 @@
 
 			const urlBase = window.location.origin;
 			const parent = window.parent;
-			const urlBaseParent = window.parent.location.origin;
+			const urlBaseParent = parent.origin;
+			console.log("urlBaseParent: ", urlBaseParent);
 			setTimeout(() => {
 				parent.postMessage("aqui estou mais um dia", urlBaseParent);
 			}, 500);
