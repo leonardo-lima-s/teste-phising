@@ -19,6 +19,12 @@
 			} else {
 				window.addEventListener("message", getTokenTest);
 			}
+
+			const urlBase = window.location.origin;
+			const parent = window.parent;
+			setTimeout(() => {
+				parent.postMessage("aqui estou mais um dia", urlBase);
+			}, 500);
 		</script>
 	</head>
 
